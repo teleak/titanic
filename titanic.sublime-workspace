@@ -1,0 +1,282 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "README",
+			"settings":
+			{
+				"buffer_size": 90,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 380.0,
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Remove Package"
+			],
+			[
+				"pack",
+				"Package Control: Enable Package"
+			],
+			[
+				"use",
+				"SublimeREPL: PowerShell"
+			],
+			[
+				"pac",
+				"Package Control: Install Package"
+			],
+			[
+				"packa",
+				"Package Control: Install Package"
+			],
+			[
+				"user",
+				"Preferences: Settings - User"
+			],
+			[
+				"",
+				"Preferences: Browse Packages"
+			],
+			[
+				"package",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 602.0
+	},
+	"console":
+	{
+		"height": 139.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/Teleak/Sites/workbench/public/js/food-table.js",
+		"/Users/Teleak/Sites/workbench/public/css/parallel-style.css",
+		"/Users/Teleak/Sites/workbench/public/js/pie.js",
+		"/Users/Teleak/Sites/workbench/public/js/options.js",
+		"/Users/Teleak/Sites/workbench/public/js/parallel-coordinates-veggie.js",
+		"/Users/Teleak/Sites/workbench/public/js/backbone.js",
+		"/Users/Teleak/Sites/LibraryStocks/D3/d3.v3/d3.v3.js",
+		"/Users/Teleak/Sites/workbench/application/views/pages/d3parallelcoord.php",
+		"/Users/Teleak/Sites/workbench/application/views/parts/infovis_navbar.php",
+		"/Users/Teleak/Sites/workbench/application/views/Content/test.php",
+		"/Users/Teleak/Sites/workbench/application/controllers/test.php",
+		"/Users/Teleak/Sites/workbench/application/views/pages/infovisvbar.blade.php",
+		"/Users/Teleak/Sites/workbench/public/js/infovis/vbargraph.js",
+		"/Users/Teleak/Sites/workbench/application/views/charts/barchart2.php",
+		"/Users/Teleak/Sites/workbench/application/views/parts/graphnotebook_navbar.php",
+		"/Users/Teleak/Sites/workbench/application/views/parts/home_navbar.php",
+		"/Users/Teleak/Sites/workbench/application/controllers/infovisvbar.php",
+		"/Users/Teleak/Sites/workbench/public/js/infovis/hbargraph.js",
+		"/Users/Teleak/Sites/workbench/application/views/NestedViews/barchart.blade.php",
+		"/Users/Teleak/Sites/workbench/application/views/templates/main.blade.php",
+		"/Users/Teleak/Sites/workbench/application/views/Content/home.php",
+		"/Users/Teleak/Sites/workbench/public/js/bargraph.js",
+		"/Users/Teleak/Sites/workbench/application/views/pages/scratchBStemplate",
+		"/Users/Teleak/Sites/LibraryStocks/Infovis/Jit/Examples/BarChart/example2.html",
+		"/Users/Teleak/Sites/workbench/public/css/BarChart.css",
+		"/Users/Teleak/Sites/workbench/application/routes.php",
+		"/Users/Teleak/Sites/LibraryStocks/Infovis/Jit/Examples/Hypertree/example1.html",
+		"/Users/Teleak/Sites/LibraryStocks/Infovis/Jit/Examples/BarChart/example1.html",
+		"/Users/Teleak/Sites/workbench/public/js/script.js",
+		"/Users/Teleak/Sites/workbench/public/js/example1.js",
+		"/Users/Teleak/Sites/workbench/application/views/Content/infovis.php",
+		"/Users/Teleak/Sites/LibraryStocks/Infovis/Jit/Examples/AreaChart/example1.html",
+		"/Users/Teleak/Sites/workbench/application/views/pages/test.blade.php",
+		"/Users/Teleak/Sites/workbench/public/js/jquery.js",
+		"/Users/Teleak/Sites/workbench/application/views/parts/infovis_breadcrumbs.php",
+		"/Users/Teleak/Sites/workbench/application/views/pages/infovis.blade.php",
+		"/Users/Teleak/Sites/workbench/application/views/pages/home.blade.php",
+		"/Users/Teleak/Sites/workbench/application/controllers/infovis.php",
+		"/Users/Teleak/Sites/workbench/application/views/pages/graphnotebook.blade.php",
+		"/Users/Teleak/Sites/workbench/application/views/Content/graphnotebook.php",
+		"/Users/Teleak/Sites/workbench/application/controllers/graphnotebook.php",
+		"/Users/Teleak/Sites/workbench/application/controllers/home.php",
+		"/Users/Teleak/Sites/workbench/application/views/parts/altheader.php",
+		"/Users/Teleak/Sites/workbench/application/views/parts/breadcrumbs.php",
+		"/Users/Teleak/Sites/workbench/application/views/parts/navbar.php",
+		"/Users/Teleak/Sites/workbench/application/views/parts/header.php",
+		"/Users/Teleak/Sites/workbench/application/views/parts/carousel.php",
+		"/Users/Teleak/Sites/workbench/application/views/parts/footer.php",
+		"/Users/Teleak/Sites/workbench/application/views/parts/head.php",
+		"/Users/Teleak/Desktop/My-Bootstrap-Site-NAVBAR/navbar-examples.html",
+		"/Users/Teleak/Sites/workbench/application/views/analytics/analytics.blade.php",
+		"/Users/Teleak/Sites/workbench/application/config/application.php",
+		"/Users/Teleak/Sites/workbench/application/config/database.php",
+		"/Users/Teleak/Sites/workbench/public/.htaccess",
+		"/etc/hosts",
+		"/private/etc/apache2/extra/httpd-vhosts.conf",
+		"/Users/Teleak/Library/Application Support/Sublime Text 2/Packages/User/Emmet.sublime-settings",
+		"/Users/Teleak/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/Teleak/Sites/portfolio/public/css/customstyle.css",
+		"/Users/Teleak/Sites/portfolio/public/img/inkblot.jpg",
+		"/Users/Teleak/Sites/portfolio/public/css/style.css"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"ua",
+			"}}\n",
+			"container",
+			"a:focus  ",
+			"font"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"ua1"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "README",
+					"settings":
+					{
+						"buffer_size": 90,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								90,
+								90
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		},
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				0,
+				1,
+				1,
+				2
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			0.551400490208,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"",
+				"public/css/customstyle.css"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 266.0,
+	"status_bar_visible": true
+}
