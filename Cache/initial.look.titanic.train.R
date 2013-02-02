@@ -1,0 +1,11 @@
+### intial look at titanic training dataset
+setwd('/Users/Teleak/Desktop/Kaggle/RawData')
+train<-read.csv("train.csv")
+head(train)
+str(train)
+summary(train)
+dim(train)
+names(train)
+survived <- subset(train, train[ ,1] == 1)
+perished <- subset(train, train[ ,1] == 0)
+survived.fem <- subset(survived, sex == 'female')

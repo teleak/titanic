@@ -1,0 +1,108 @@
+### Kaggle Titanic Question
+
+#### Titanic Overview: 
+* Sank April 15, 1912
+* 1,502 of 2,224 passengers and crew perished
+
+#### Evaluation: 
+* Data set split into training and test sets
+* For training set, outcome provided ('ground truth')
+* Use training set model to generate predictions for test set 
+
+#### Goals
+* For each passenger in the test set, one must predict whether or not they survived the sinking
+	* 0 == deceased, 1 == survived in data set
+	
+#### Available Elements (11)
+1. survived (1,0)
+2. pclass (1, 2, 3)
+3. name
+4. sex (male or female)
+5. age
+6. sibsp (number of siblings or spouses aboard -- 0, 1:5, 8)
+7. Parch (number of parents/children aboard -- 0:6)
+8. fare (passenger fare)
+9. cabin 
+10. embarked (Port of embarkation)
+	* C = Cherbourg; Q = Queenstown; S = Southampton 
+	
+#### Hypothesis: intuitive assumptions
+* Young females with family members aboard (esp. parents/siblings) of higher social status (better accommodation class) were more likely to get a limited lifeboat slot. 
+* Survival may have depended upon cabin
+
+#### Hypothesis
+* H0 all passengers had an equal chance of survival
+* H1 younger female 1st class passengers with family aboard had a higher survival rate. 
+
+#### Exploratory Analysis 
+1. % male and female survivors adjusted for % of each in total
+2. Relationship to: 
+	1. Class of berth
+	2. Number of siblings
+	3. Survivors Age
+	4. Fare paid
+	5. Cabin location (look for obvious patterns and then research ship berthing if needed)
+	6. Relation to port of embarkation
+	
+#### Likely Analytical Paths
+1. Random Forest Analysis
+2. Principal Component Analysis
+3. Bayesian Multivariate Prediction 
+
+### Data Description and Munging
+********
+<!--- Start Analysis JW --->
+<!--- set working directory and read in dataset -->
+```{r setwd, eval=TRUE, echo=FALSE}
+setwd('/Users/Teleak/Desktop/Kaggle/RawData') ### set working directory and read in training file
+train<-read.csv("train.csv", colClasses=c("factor", "factor", "character", "factor", "numeric", "factor", "factor", "character", "numeric", "character", "character"), strip.white=TRUE, sep=",")
+```
+#### Initial data structure
+```{r, structure, echo=FALSE, results='markup'}
+str(train)
+head(train, n=10)
+```
+#### Columns with NA values
+<!-- Figure out NA values -->
+```{r, column.NA.count, echo=FALSE, results='markup'}
+apply(train, 2, function(col) length(which(is.na(col)))) ### shows count of NA values by column
+```
+```{r, rows.with.na, echo=FALSE}
+has.na<-subset(train, !complete.cases(train)) ### shows rows with NA
+na.female<-nrow(subset(has.na, has.na$sex== "female"))
+na.male<-nrow(subset(has.na, has.na$sex== "male"))
+```
+
+#### Columns with no entry
+```{r, noentry}
+length(which(train$embarked==""))
+length(which(train$cabin==""))
+train[train==""] = "unk" ## convert blanks to "unk"
+head(train, n=10)
+
+```
+
+#### Summary of missing entities in full training dataset
+* `r nrow(has.na) ` missing entities in data frame
+* All missing entities in age column
+* $\approx$ `r round(na.female/nrow(has.na) * 100)`% of NA values are females
+* $\approx$ `r round(na.male/nrow(has.na) * 100)`% of NA values are male
+
+#### Breakdown of males to females prior to sinking
+```{r, sex.ratio, echo=FALSE}
+n.train<-nrow(train)
+males<-nrow(subset(train, train$sex == 'male'))
+females<-nrow(subset(train, train$sex == 'female'))
+```
+* $\approx$ `r round((females/n.train)*100)`% of crew and passengers were female prior to sinking
+* $\approx$ `r round((males/n.train)*100)`% of crew and passengers were male prior to sinking
+
+
+#### Breakdown of males to females after sinking
+```{r, survivors, echo=FALSE}
+survived<-nrow(subset(train, train[ ,1] == 1))
+survived.male <- nrow(subset(train, train[ ,1] == 1 & train$sex == 'male'))
+survived.female<-nrow(subset(train, train[ ,1] == 1 & train$sex == 'female'))
+```
+* $\approx$ `r round((survived.female/survived)*100)`% of the survivors were female
+* $\approx$ `r round((survived.male/survived)*100)`% of the survivors were male
