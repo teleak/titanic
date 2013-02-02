@@ -69,7 +69,7 @@
 ##  $ ticket  : chr  "A/5 21171" "PC 17599" "STON/O2. 3101282" "113803" ...
 ##  $ fare    : num  7.25 71.28 7.92 53.1 8.05 ...
 ##  $ cabin   : chr  "" "C85" "" "C123" ...
-##  $ embarked: Factor w/ 4 levels "","C","Q","S": 4 2 4 4 4 3 4 4 4 2 ...
+##  $ embarked: chr  "S" "C" "S" "S" ...
 ```
 
 ```
@@ -129,14 +129,7 @@ length(which(train$cabin == ""))
 ```
 
 ```r
-train[train == ""] = "unk"  ## convert NA values to blanks
-```
-
-```
-## Warning: invalid factor level, NAs generated
-```
-
-```r
+train[train == ""] = "unk"
 head(train, n = 10)
 ```
 

@@ -287,7 +287,7 @@ hljs.initHighlightingOnLoad();
 ##  $ ticket  : chr  &quot;A/5 21171&quot; &quot;PC 17599&quot; &quot;STON/O2. 3101282&quot; &quot;113803&quot; ...
 ##  $ fare    : num  7.25 71.28 7.92 53.1 8.05 ...
 ##  $ cabin   : chr  &quot;&quot; &quot;C85&quot; &quot;&quot; &quot;C123&quot; ...
-##  $ embarked: Factor w/ 4 levels &quot;&quot;,&quot;C&quot;,&quot;Q&quot;,&quot;S&quot;: 4 2 4 4 4 3 4 4 4 2 ...
+##  $ embarked: chr  &quot;S&quot; &quot;C&quot; &quot;S&quot; &quot;S&quot; ...
 </code></pre>
 
 <pre><code>##    survived pclass                                                name
@@ -338,13 +338,8 @@ hljs.initHighlightingOnLoad();
 <pre><code>## [1] 687
 </code></pre>
 
-<pre><code class="r">train[train == &quot;&quot;] = &quot;unk&quot;  ## convert NA values to blanks
-</code></pre>
-
-<pre><code>## Warning: invalid factor level, NAs generated
-</code></pre>
-
-<pre><code class="r">head(train, n = 10)
+<pre><code class="r">train[train == &quot;&quot;] = &quot;unk&quot;
+head(train, n = 10)
 </code></pre>
 
 <pre><code>##    survived pclass                                                name
