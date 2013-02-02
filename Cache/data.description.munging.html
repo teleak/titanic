@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>Kaggle Titanic Data Description and Munging</title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+
+
+
+
+</head>
+
+<body>
+<h1>Kaggle Titanic Data Description and Munging</h1>
+
+<h4>Titanic Overview:</h4>
+
+<ul>
+<li>Sank April 15, 1912</li>
+<li>1,502 of 2,224 passengers and crew perished</li>
+</ul>
+
+<h4>Evaluation:</h4>
+
+<ul>
+<li>Data set split into training and test sets</li>
+<li>For training set, outcome provided (&#39;ground truth&#39;)</li>
+<li>Use training set model to generate predictions for test set </li>
+</ul>
+
+<h4>Goals</h4>
+
+<ul>
+<li>For each passenger in the test set, one must predict whether or not they survived the sinking
+
+<ul>
+<li>0 == deceased, 1 == survived in data set</li>
+</ul></li>
+</ul>
+
+<h4>Available Elements (11)</h4>
+
+<ol>
+<li>survived (1,0)</li>
+<li>pclass (1, 2, 3)</li>
+<li>name</li>
+<li>sex (male or female)</li>
+<li>age</li>
+<li>sibsp (number of siblings or spouses aboard &ndash; 0, 1:5, 8)</li>
+<li>Parch (number of parents/children aboard &ndash; 0:6)</li>
+<li>fare (passenger fare)</li>
+<li>cabin </li>
+<li>embarked (Port of embarkation)
+
+<ul>
+<li>C = Cherbourg; Q = Queenstown; S = Southampton </li>
+</ul></li>
+</ol>
+
+<h4>Hypothesis: intuitive assumptions</h4>
+
+<ul>
+<li>Young females with family members aboard (esp. parents/siblings) of higher social status (better accommodation class) were more likely to get a limited lifeboat slot. </li>
+<li>Survival may have depended upon cabin</li>
+</ul>
+
+<h4>Hypothesis</h4>
+
+<ul>
+<li>H0 all passengers had an equal chance of survival</li>
+<li>H1 younger female 1st class passengers with family aboard had a higher survival rate. </li>
+</ul>
+
+<h4>Exploratory Analysis</h4>
+
+<ol>
+<li>% male and female survivors adjusted for % of each in total</li>
+<li>Relationship to: 
+
+<ol>
+<li>Class of berth</li>
+<li>Number of siblings</li>
+<li>Survivors Age</li>
+<li>Fare paid</li>
+<li>Cabin location (look for obvious patterns and then research ship berthing if needed)</li>
+<li>Relation to port of embarkation</li>
+</ol></li>
+</ol>
+
+<h4>Likely Analytical Paths</h4>
+
+<ol>
+<li>Random Forest Analysis</li>
+<li>Principal Component Analysis</li>
+<li>Bayesian Multivariate Prediction </li>
+</ol>
+
+<h4>data entry and munging</h4>
+
+<p>Working data set named &ldquo;train.&rdquo; This is the training dataset</p>
+
+<!-- deal with blank variables -->
+
+<pre><code>## [1] 689
+</code></pre>
+
+<pre><code>## [1] 2
+</code></pre>
+
+<pre><code>## [1] 687
+</code></pre>
+
+</body>
+
+</html>
+
