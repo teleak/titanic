@@ -1,0 +1,119 @@
+Kaggle Titanic Training Dataset Description and Munging 
+========================================================
+### Intial dataset called "data"
+```{r setwd, eval=TRUE, echo=FALSE}
+setwd('/Users/Teleak/Desktop/Kaggle/RawData') ### set working directory and read in training file
+data<-read.csv("train.csv", colClasses=c("factor", "factor", "character", "factor", "numeric", "factor", "factor", "character", "numeric", "character", "character"), strip.white=TRUE, sep=",")
+```
+******
+```{r, libraries, echo=FALSE, results='hide', message=FALSE}
+require(plyr)
+```
+## Description of whole training dataset "data"
+*****
+#### Dimensions of dataset in rows and columns
+```{r, datadim, echo=FALSE, results='markup'}
+dim(data)
+```
+#### Names and classes of data
+```{r, nameclass, echo=FALSE, results='markup'}
+as.list(sapply(data, class))
+```
+#### Number of NA's in each column
+```{r, nnas, echo=FALSE, results='markup'}
+apply(data, 2, function(col) length(which(is.na(col)))) ### shows count of NA values by column
+```
+#### Number of blank's in each column
+```{r, nblanks, echo=FALSE, results='markup'}
+apply(data, 2, function(col) length(which(col == ""))) ### shows count of blank values by column
+```
+#### Summary of whole training set 
+```{r, summary, echo=FALSE, results='markup'}
+summary(data)
+```
+### Summary of full data set passenger types by class, sex, and survival
+* Full dataset with all NA's and Blanks (none in columns used for calculations).
+```{r, datasex, echo=FALSE, results='hide'}
+(data.passengers<-ddply(data, .(pclass, sex), summarise, 
+			 number = length(sex)
+ 			))
+(data.survived.sum<-ddply(subset(data, data$survived == 1), .(pclass, sex), summarise, 
+			 survived = length(sex)
+ 			))
+(data.perished.sum<-ddply(subset(data, data$survived == 0), .(pclass, sex), summarise, 
+			 perished = length(sex)
+ 			))
+```
+```{r, data.sum.combined, echo=FALSE}
+merged.s <- merge(data.passengers, data.survived.sum, by=c('pclass', 'sex' ))
+merged <- merge(merged.s, data.perished.sum, by=c('pclass', 'sex'))
+ddply(merged, .(pclass, sex, number, survived, perished), summarise, 
+			 pclass = pclass,
+			 sex = sex, 
+			 number = number, 
+			 survived = survived, 
+			 perc.survive = round(survived/number * 100, digits=2),
+	 		 perished = perished, 
+	 		 perc.perish = round(perished/number * 100, digits=2)
+	 )
+
+```
+
+### Summary of data containing just NA values (those that will be removed)
+>__!!! Idea !!!__, may be able to estimate ages from internet
+```{r explore.na, echo=FALSE, results='hide'}
+has.na<-data[!(complete.cases(data)),] ### subsets data to rows with NA values all of which are in age column (previously determined)
+nrow(has.na) ### 177 rows with NA values in age
+(na.passengers<-ddply(has.na, .(pclass, sex), summarise, 
+			 total = length(sex)
+ 			))
+na.surv <- ddply(subset(has.na, survived == 1), .(pclass, sex), summarise, 
+			 survived = length(sex)
+ 			)
+na.perish <- ddply(subset(has.na, survived == 0), .(pclass, sex), summarise, 
+			 perished = length(sex)
+ 			)
+merged.na.s <- merge(na.passengers, na.surv, by=c('pclass', 'sex' ))
+merge.na <- merge(merged.na.s, na.perish, by=c('pclass', 'sex'))
+```
+```{r, na.summary, echo=FALSE}
+(all.na.sum <- ddply(merge.na, .(pclass, sex, total, survived, perished), summarise, #### combined summary here
+			 pclass = pclass,
+			 sex = sex, 
+			 total = total, 
+			 survived = survived, 
+			 perc.survive = round(survived/total * 100, digits=2),
+	 		 perished = perished, 
+	 		 perc.perished = round(perished/total * 100, digits=2)
+	 ))
+```
+### Summary of data after removal of NA's 
+****
+```{r remove.na, echo=FALSE, results='hide'}
+no.na<-data[complete.cases(data),] ### subsets data to rows with NA values all of which are in age column (previously determined)
+nrow(no.na) ### 177 rows with NA values in age
+(no.na.passengers<-ddply(no.na, .(pclass, sex), summarise, 
+			 total = length(sex)
+ 			))
+no.na.surv <- ddply(subset(no.na, survived == 1), .(pclass, sex), summarise, 
+			 survived = length(sex)
+ 			)
+no.na.perish <- ddply(subset(no.na, survived == 0), .(pclass, sex), summarise, 
+			 perished = length(sex)
+ 			)
+merged.no.na.s <- merge(no.na.passengers, no.na.surv, by=c('pclass', 'sex' ))
+merge.no.na <- merge(merged.no.na.s, no.na.perish, by=c('pclass', 'sex'))
+```
+```{r, no.na.summary, echo=FALSE}
+(no.na.sum <- ddply(merge.no.na, .(pclass, sex, total, survived, perished), summarise, #### combined summary here
+			 pclass = pclass,
+			 sex = sex, 
+			 total = total, 
+			 survived = survived, 
+			 perc.survive = round(survived/total * 100, digits=2),
+	 		 perished = perished, 
+	 		 perc.perished = round(perished/total * 100, digits=2)
+	 ))
+```
+
+

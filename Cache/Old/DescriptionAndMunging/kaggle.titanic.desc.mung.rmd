@@ -1,0 +1,19 @@
+Kaggle Titanic Training Dataset Description and Munging 
+========================================================
+### Intial dataset called "data"
+```{r setwd, eval=TRUE, echo=FALSE}
+setwd('/Users/Teleak/Desktop/Kaggle/RawData') ### set working directory and read in training file
+data<-read.csv("train.csv", colClasses=c("factor", "factor", "character", "factor", "numeric", "factor", "factor", "character", "numeric", "character", "character"), strip.white=TRUE, sep=",")
+```
+******
+## Description of dataset
+*****
+#### Dimensions of dataset in rows and columns
+```{r, echo=FALSE, results='markup'}
+dim(data)
+```
+#### Names and classes of data
+```{r, echo=FALSE, results='markup'}
+as.list(sapply(data, class))
+```
+#### Number of NA's in each column
